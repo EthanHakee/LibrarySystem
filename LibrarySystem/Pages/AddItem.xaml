@@ -1,0 +1,151 @@
+﻿<Page x:Class="LibrarySystem.Pages.AddItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem.Pages"
+      mc:Ignorable="d"
+      MinHeight="385"
+      Width="800"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      Title="Library System"
+      FontSize="20"
+      Background="#303030"
+      Foreground="White">
+
+
+    <Grid>
+        <Grid x:Name="MemberPanel" Margin="0,0,405,0" HorizontalAlignment="Stretch" Width="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="First Name"
+                       Margin="10,5,5,0"
+                       VerticalAlignment="Top"
+                       Grid.Row="0"/>
+            <TextBox Name="Member_FirstName_Input"
+                     Margin="5,5,5,0"
+                     VerticalAlignment="Bottom"
+                     Grid.Row="0"/>
+            <TextBlock Text="Last Name"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="1"/>
+            <TextBox Name="Member_LastName_Input"
+                     VerticalAlignment="Bottom"
+                     Margin="5,5,5,0" 
+                     Grid.Row="1"/>
+            <TextBlock Text="Address"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="2"/>
+            <TextBox Name="Member_Address_Input"
+                     VerticalAlignment="bottom"
+                     Margin="5,5,5,0"
+                     Grid.Row="2"/>
+            <TextBlock Text="Email Address"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="3"/>
+            <TextBox Name="Member_EmailAddress_Input"
+                     VerticalAlignment="Bottom"
+                     Margin="5,5,5,0"
+                     Grid.Row="3"/>
+            <TextBlock Text="Phone Number"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="4"/>
+            <TextBox Name="Member_PhoneNumber_Input"
+                     VerticalAlignment="Bottom"
+                     Margin="5,5,5,0"
+                     Grid.Row="4"/>
+
+            <Button  Name="Submit"
+                     Grid.Row="5"
+                     Content="Create Customer"
+                     Click="Member_Submit_Click"
+                     Background="#404258"
+                     Foreground="White"
+                     Margin="5,5,5,5"
+                     Padding="50,50,50,50"/>
+        </Grid>
+
+        <Grid x:Name="ItemPanel" Margin="405,0,0,0" HorizontalAlignment="Stretch" Width="auto">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="Media Type"
+                       Margin="10,5,5,0"
+                       VerticalAlignment="Top"
+                       Grid.Row="0"/>
+            <TextBox Name="Item_Type_Input"
+                     Margin="5,5,5,0"
+                     VerticalAlignment="Bottom"
+                     Grid.Row="0"/>
+            <TextBlock Text="Genre"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="1"/>
+            <TextBox Name="Item_Genre_Input"
+                     VerticalAlignment="Bottom"
+                     Margin="5,5,5,0" 
+                     Grid.Row="1"/>
+            <TextBlock Text="Title"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="2"/>
+            <TextBox Name="Item_Title_Input"
+                     VerticalAlignment="bottom"
+                     Margin="5,5,5,0"
+                     Grid.Row="2"/>
+            <TextBlock Text="Author"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="3"/>
+            <TextBox Name="Item_Author_Input"
+                     VerticalAlignment="Bottom"
+                     Margin="5,5,5,0"
+                     Grid.Row="3"/>
+            <TextBlock Text="Is It available"
+                       VerticalAlignment="Top"
+                       Margin="10,5,5,0"
+                       Grid.Row="4"/>
+
+            <ContentControl Grid.Row="4"
+                            FontSize="15"
+                            FontWeight="DemiBold"
+                            Height="auto"
+                            Margin="5,5,5,0"
+                            VerticalAlignment="Bottom"
+                            Style="{StaticResource MyContentControlStyle}">
+                <TextBlock Text="Items are automatical set to Available when created" 
+                       Height="auto"
+                       VerticalAlignment="Bottom" 
+                       Width="auto"/>
+            </ContentControl>
+
+            <Button  Name="ItemSubmit"
+                   
+                     Grid.Row="5"
+                     Content="Add Item"
+                     Click="Item_Submit_Click"
+                     Background="#404258"
+                     Foreground="White"
+                     Margin="5,5,5,5"
+                     Padding="50,50,50,50"/>
+        </Grid>
+    </Grid>
+</Page>
