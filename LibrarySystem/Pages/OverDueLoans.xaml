@@ -15,10 +15,22 @@
 
         <DataGrid Name="LoanGrid"
                   Width="760"
-                  Margin="20,20,20,20"
+                  Margin="20,20,20,100"
                   BorderBrush="Transparent"
-                  Background="#252525">
+                  Background="#252525"
+                  SelectionChanged="LoanGrid_SelectionChanged"
+                  SelectionMode="Single"
+                  IsReadOnly="True">
         </DataGrid>
+
+        <TextBox VerticalAlignment="Bottom"
+                   Height="50"
+                  Name="AmountDue"
+                 Margin="10,10,10,10"
+                 Width="300"
+                 HorizontalContentAlignment="Center">
+            
+        </TextBox>
 
     </Grid>
 </Page>

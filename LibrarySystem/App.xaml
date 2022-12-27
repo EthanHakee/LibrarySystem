@@ -12,7 +12,7 @@
                         <Border Name="Border"
                                 CornerRadius="10"
                                 BorderThickness="1"
-                                Padding="10"
+                                Padding="1"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center">
@@ -113,22 +113,22 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Red"/>
             </Style.Resources>
             <Setter Property="Foreground" Value="#fff"/>
-            <Setter Property="Selector.IsEnabled" Value="False"/>
             <Setter Property="Background" Value="#252525"/>
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
             <Setter Property="Padding" Value="50"/>
             <Setter Property="Height" Value="25"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="False">
-                    <Setter Property="Foreground" Value="Red"/>
-                </Trigger>
-            </Style.Triggers>
-            
         </Style>
 
         <Style TargetType="DataGridCell">
             <Setter Property="Padding" Value="50"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="#6B728E"/>
+                    <Setter Property="Background" Value="#303030"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
 

@@ -16,12 +16,15 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid Grid.Column="0">
 
             <DataGrid Name="LoanGrid"
                       Margin="10,10,10,10"
-                      Foreground="Black" SelectionChanged="LoanGrid_SelectionChanged">
+                      Foreground="Black" 
+                      SelectionMode="Single"
+                      AutoGeneratingColumn="OnAutoGeneratingColumn"
+                      SelectionChanged="LoanGrid_SelectionChanged">
             </DataGrid>
 
         </Grid>
@@ -35,7 +38,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+
             <TextBlock Text="Date Loaned"
                        Margin="10,5,5,0"
                        VerticalAlignment="Top"
@@ -73,16 +76,30 @@
                      Height="40"
                      Grid.Row="3"/>
 
-            <Button  Name="ItemSubmit"
-                   
-                     Grid.Row="4"
-                     Content="Add Item"
-                     Background="#404258"
-                     Foreground="White"
-                     Margin="5,5,5,5"
-                     Padding="50,50,50,50"/>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
+                <Button  Name="UpdateLoan"
+                         Grid.Column="0"
+                        Content="Update"
+                        Background="#404258"
+                        Foreground="White"
+                        Margin="5,5,5,5"
+                        Padding="1,1,1,1"
+                         Click="Update_Loan_Submit"/>
+
+                <Button  Name="DeleteLoan"
+                        Grid.Column="1"
+                        Content="Delete"
+                        Background="#404258"
+                        Foreground="White"
+                        Margin="5,5,5,5"
+                        Padding="1,1,1,1"
+                        Click="Delete_Loan_Submit"/>
+            </Grid>
         </Grid>
-
     </Grid>
 </Page>

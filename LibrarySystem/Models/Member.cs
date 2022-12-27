@@ -30,7 +30,6 @@ namespace LibrarySystem.Models
             EmailAddress = emailAddress;
             PhoneNumber = phoneNumber;
         }
-
         public Member(string firstName, string lastName, string address, string emailAddress, string phoneNumber)
         {
             FirstName = firstName;
@@ -43,7 +42,7 @@ namespace LibrarySystem.Models
         public static List<string> GetShortDetails(List<Member> members)
         {
             List<string> result = new List<string>();
-            foreach(Member member in members)
+            foreach (Member member in members)
             {
                 result.Add($"{member.FirstName} {member.LastName} : {member.EmailAddress}");
             }
@@ -64,29 +63,5 @@ namespace LibrarySystem.Models
 
             return result;
         }
-
-        public static List<string> MemberToList(Member member)
-        {
-            List<string> attributes = new List<string>
-            {
-                "First Name",
-                member.FirstName,
-                "----------",
-                "Last Name",
-                member.LastName,
-                "----------",
-                "Address",
-                member.Address,
-                "----------",
-                "Email Address",
-                member.EmailAddress,
-                "----------",
-                "Phone Number",
-                member.PhoneNumber
-            };
-
-            return attributes;
-        }
-
     }
 }

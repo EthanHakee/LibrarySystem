@@ -2,6 +2,7 @@
 using LibrarySystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -136,8 +137,10 @@ namespace LibrarySystem.Pages
             //adding the loan duration to the current date
             DateTime DateOut = DateTime.Now;
             DateTime DateDue = DateTime.Now.AddDays(DATE_DUE);
+            Member member = ALL_MEMBERS.Where(x => x.Id == SELECTED_MEMBER_ID).First();
+            Item item = ALL_ITEMS.Where(x => x.Id == SELECTED_ITEM_ID).First();
 
-            Loan loan = new(SELECTED_MEMBER_ID, SELECTED_ITEM_ID, DateOut, DateDue);
+            Loan loan = new(member, item, DateOut, DateDue);
 
             SqliteDataAccess.SaveLoan(loan);
 
