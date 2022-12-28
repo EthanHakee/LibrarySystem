@@ -24,6 +24,7 @@ namespace LibrarySystem.Pages
                 {
                     DataGridLoan loan = new DataGridLoan(item.Member, item.Item, item.DateOut, item.DateDue);
                     result.Add(loan);
+
                 }
             }
 
@@ -33,8 +34,9 @@ namespace LibrarySystem.Pages
         private void LoanGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGridLoan loan = (DataGridLoan)LoanGrid.SelectedItem;
-            double Fine = ((DateTime.Now - Convert.ToDateTime(loan.DateDue)).TotalDays * 25) / 100;
-            AmountDue.Text = $"£ {Math.Round(Fine,2)}";
+            int days = Convert.ToInt32(Math.Round((DateTime.Now - Convert.ToDateTime(loan.DateDue)).TotalDays, 0));
+            double Fine = (days * 0.25);
+            AmountDue.Text = $"Amount Due: £{Math.Round(Fine,2)}";
         }
 
     }

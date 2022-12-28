@@ -108,7 +108,7 @@ namespace LibrarySystem.DataAccess
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query($"UPDATE Loan SET Member = '{loan.Member}' , Item = '{loan.Item}', " +
+                var output = cnn.Query($"UPDATE Loan SET Member = '{loan.Member.Id}' , Item = '{loan.Item.Id}', " +
                     $"DateOut = '{loan.DateOut}', DateDue = '{loan.DateDue}' WHERE Id = {loan.Id} ", new DynamicParameters());
             }
         }
