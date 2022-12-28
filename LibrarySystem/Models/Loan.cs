@@ -15,8 +15,8 @@ namespace LibrarySystem.Models
         public Loan(long id, long member, long item, string dateOut, string dateDue)
         {
             Id= Convert.ToInt32(id);
-            Member = SqliteDataAccess.LoadMembers().Where(x => x.Id == member).First();
-            Item = SqliteDataAccess.LoadItems().Where(x => x.Id == item).First();
+            Member = SqliteDataAccess.Load<Member>().Where(x => x.Id == member).First();
+            Item = SqliteDataAccess.Load<Item>().Where(x => x.Id == item).First();
             DateOut = Convert.ToDateTime(dateOut);
             DateDue = Convert.ToDateTime(dateDue);
         }

@@ -38,7 +38,7 @@ namespace LibrarySystem.Pages
 
             //Create a new Item object and saving it
             Item item = new(type, genre, Item_Title_Input.Text, Item_Author_Input.Text, 1);
-            SqliteDataAccess.SaveItem(item);
+            SqliteDataAccess.Save(item);
 
             //Clearing all the values in the text boxes
             foreach (UIElement element in ItemPanel.Children)
@@ -57,7 +57,7 @@ namespace LibrarySystem.Pages
             try
             {
                 Member member = new Member(Member_FirstName_Input.Text, Member_LastName_Input.Text, Member_Address_Input.Text, Member_EmailAddress_Input.Text, Member_PhoneNumber_Input.Text);
-                SqliteDataAccess.SaveMember(member);
+                SqliteDataAccess.Save(member);
             }
             catch
             {

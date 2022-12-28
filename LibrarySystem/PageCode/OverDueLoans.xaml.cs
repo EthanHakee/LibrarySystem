@@ -3,15 +3,13 @@ using LibrarySystem.Models;
 using LibrarySystem.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Transactions;
 using System.Windows.Controls;
 
 namespace LibrarySystem.Pages
 {
     public partial class OverDueLoans : Page
     {
-        IEnumerable<Loan> ALL_LOANS = SqliteDataAccess.LoadLoans();
+        IEnumerable<Loan> ALL_LOANS = SqliteDataAccess.Load<Loan>();
         public OverDueLoans()
         {
             InitializeComponent();

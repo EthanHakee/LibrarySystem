@@ -12,8 +12,7 @@ namespace LibrarySystem.Pages
 {
     public partial class ManageLoans : Page
     {
-        IEnumerable<Loan> ALL_LOANS = SqliteDataAccess.LoadLoans();
-        IEnumerable<Member> ALL_MEMBERS = SqliteDataAccess.LoadMembers();
+        IEnumerable<Loan> ALL_LOANS = SqliteDataAccess.Load<Loan>();
         public ManageLoans()
         {
             InitializeComponent();
@@ -42,16 +41,16 @@ namespace LibrarySystem.Pages
             {
                 Loan_Out_Input.Text = loan.DateOut.ToString();
                 ReturnDate.Text = loan.DateDue.ToString();
-               
+
                 Item_Title_Input.Text = loan.Item.ToString();
                 Member_Name_Input.Text = loan.Member.ToString();
             }
-          
+
         }
 
         public void updateDataGrid()
         {
-            ALL_LOANS = SqliteDataAccess.LoadLoans();
+            ALL_LOANS = SqliteDataAccess.Load<Loan>();
             LoanGrid.ItemsSource = null;
             LoanGrid.ItemsSource = PopulateGrid();
         }
@@ -59,14 +58,14 @@ namespace LibrarySystem.Pages
         private void Delete_Loan_Submit(object sender, RoutedEventArgs e)
         {
             Loan loan = ALL_LOANS.Where(x => x.Item.Title == Item_Title_Input.Text).First();
-            SqliteDataAccess.DeleteLoan(loan);
+            SqliteDataAccess.Delete(loan);
             updateDataGrid();
         }
         private void Update_Loan_Submit(object sender, RoutedEventArgs e)
         {
             Loan loan = ALL_LOANS.Where(x => x.Item.Title == Item_Title_Input.Text).First();
             loan.DateDue = Convert.ToDateTime(ReturnDate.Text);
-            SqliteDataAccess.UpdateLoan(loan);
+            SqliteDataAccess.Update(loan);
             updateDataGrid();
         }
 

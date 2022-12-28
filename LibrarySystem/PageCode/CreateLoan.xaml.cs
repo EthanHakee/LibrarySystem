@@ -11,8 +11,9 @@ namespace LibrarySystem.Pages
 {
     public partial class CreateLoan : Page
     {
-        IEnumerable<Member> ALL_MEMBERS = SqliteDataAccess.LoadMembers();
-        IEnumerable<Item> ALL_ITEMS = SqliteDataAccess.LoadItems();
+        IEnumerable<Member> ALL_MEMBERS = SqliteDataAccess.Load<Member>();
+        IEnumerable<Item> ALL_ITEMS = SqliteDataAccess.Load<Item>();
+        IEnumerable<Loan> ALL_LOANS = SqliteDataAccess.Load<Loan>();
         List<int> SEARCH_ITEM_IDS = new();
         List<int> SEARCH_MEMBER_IDS = new();
         int SELECTED_ITEM_ID;
@@ -26,6 +27,7 @@ namespace LibrarySystem.Pages
 
         public List<Item> DBItemSearch(IEnumerable<Item> AllItems)
         {
+            bool found = false;
             string SearchQuery = Loan_Product_Search.Text;
             List<Item> Result = new List<Item>();
 
@@ -34,7 +36,20 @@ namespace LibrarySystem.Pages
             foreach (Item item in AllItems)
             {
                 if (item.Title.Contains(SearchQuery, StringComparison.CurrentCultureIgnoreCase))
-                    Result.Add(item);
+                {
+                    foreach (var l in ALL_LOANS)
+                    {
+                        if (l.Item.Id == item.Id)
+                        {
+                            found= true;
+                        }
+                    }
+
+                    if(!found)
+                    {
+                        Result.Add(item);
+                    }
+                }
             }
 
             return Result;
@@ -142,7 +157,7 @@ namespace LibrarySystem.Pages
 
             Loan loan = new(member, item, DateOut, DateDue);
 
-            SqliteDataAccess.SaveLoan(loan);
+            SqliteDataAccess.Save(loan);
 
             //Reload the page to get rid of all of the date
             NavigationService ns = NavigationService.GetNavigationService(this);
