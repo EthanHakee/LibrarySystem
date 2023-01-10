@@ -52,6 +52,7 @@ namespace LibrarySystem.Models
 
         public static List<string> GetAllDetails(Member member)
         {
+            //s
             List<string> result = new List<string>()
             {
                member.FirstName,
