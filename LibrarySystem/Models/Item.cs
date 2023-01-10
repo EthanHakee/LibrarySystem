@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Net.NetworkInformation;
 
 namespace LibrarySystem.Models
 {
@@ -83,8 +81,7 @@ namespace LibrarySystem.Models
         VHSTape,
         SheetMusic,
         Map,
-        ScientificJournal,
-        AcademicResearchDocument
+        ScientificJournal
     }
 
     public enum Genre

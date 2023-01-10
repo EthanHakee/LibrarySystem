@@ -11,6 +11,7 @@ namespace LibrarySystem.Models
         public Item Item { get; set; }
         public DateTime DateOut { get; set; }
         public DateTime DateDue { get; set; }
+        
 
         public Loan(long id, long member, long item, string dateOut, string dateDue)
         {

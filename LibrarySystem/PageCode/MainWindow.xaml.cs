@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace LibrarySystem
 {
@@ -16,20 +15,20 @@ namespace LibrarySystem
             Main.Content = new Pages.CreateLoan();
         }
 
-        private void Product_Search_Click(object sender, RoutedEventArgs e)
+        private void Manage_Loans_Click(object sender, RoutedEventArgs e)
         {
             
             Main.Content = new Pages.ManageLoans();
         }
 
-        private void Customer_Search_Click(object sender, RoutedEventArgs e)
+        private void OverDue_Loans_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Pages.OverDueLoans();
         }
 
-        private void Add_Item_Click(object sender, RoutedEventArgs e)
+        private void Add_Items_And_Members_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Pages.AddItem();
+            Main.Content = new Pages.Create();
         }
     }
 }

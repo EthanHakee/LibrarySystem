@@ -3,69 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LibrarySystem"
         mc:Ignorable="d"
-        Title="Library System"
-        ResizeMode="NoResize"
-        Height="500"
-        Width="825"
-        FontSize="20"
-        FontWeight="DemiBold"
-        Background="#303030">
+        Title="Library System">
+
     <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="14*"/>
         </Grid.RowDefinitions>
 
         <Button Content="Loan Item"
                     Grid.Column="0"
-                    Grid.Row="0"
                     Background="#50577A"
-                    Foreground="White"
-                    Padding="20,20,20,20"
                     Margin="5,5,5,5"
                     Click="Loan_Item_Click"/>
 
         <Button Content="Manage Loans "
                     Grid.Column="1"
-                    Grid.Row="0"
                     Background="#50577A"
-                    Foreground="White"
-                    Padding="20,20,20,20"
                     Margin="5,5,5,5"
-                    Click="Product_Search_Click"/>
+                    Click="Manage_Loans_Click"/>
 
         <Button Content="Over Due Loans"
                     Grid.Column="2"
-                    Grid.Row="0"
                     Background="#50577A"
-                    Foreground="White"
-                    Padding="20,20,20,20"
                     Margin="5,5,5,5"
-                    Click="Customer_Search_Click"/> 
+                    Click="OverDue_Loans_Click"/>
 
         <Button Content="Add Member/Item"
                     Grid.Column="3"
-                    Grid.Row="0"
                     Background="#50577A"
-                    Foreground="White"
-                    Padding="20,20,20,20"
                     Margin="5,5,5,5"
-                    Click="Add_Item_Click"/>
+                    Click="Add_Items_And_Members_Click"/>
 
         <Frame x:Name="Main"
-               Grid.Column="0"
                Grid.Row="1"
                Grid.ColumnSpan="4"
-               NavigationUIVisibility="Hidden">
+               NavigationUIVisibility="Hidden"/>
 
-        </Frame>
     </Grid>
+    
 </Window>

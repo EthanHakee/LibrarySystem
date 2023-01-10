@@ -3,7 +3,6 @@ using LibrarySystem.Models;
 using LibrarySystem.ViewModels;
 using System.Collections.Generic;
 using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
@@ -13,6 +12,7 @@ namespace LibrarySystem.Pages
     public partial class ManageLoans : Page
     {
         IEnumerable<Loan> ALL_LOANS = SqliteDataAccess.Load<Loan>();
+
         public ManageLoans()
         {
             InitializeComponent();
@@ -21,11 +21,11 @@ namespace LibrarySystem.Pages
 
         public List<DataGridLoan> PopulateGrid()
         {
-            List<DataGridLoan> result = new List<DataGridLoan>();
+            List<DataGridLoan> result = new();
 
             foreach (var item in ALL_LOANS)
             {
-                DataGridLoan loan = new DataGridLoan(item.Member, item.Item, item.DateOut, item.DateDue);
+                DataGridLoan loan = new(item.Member, item.Item, item.DateOut, item.DateDue);
                 result.Add(loan);
             }
 
@@ -34,18 +34,15 @@ namespace LibrarySystem.Pages
 
         private void LoanGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             DataGridLoan loan = (DataGridLoan)LoanGrid.SelectedItem;
 
             if (loan != null)
             {
                 Loan_Out_Input.Text = loan.DateOut.ToString();
                 ReturnDate.Text = loan.DateDue.ToString();
-
                 Item_Title_Input.Text = loan.Item.ToString();
                 Member_Name_Input.Text = loan.Member.ToString();
             }
-
         }
 
         public void updateDataGrid()
@@ -58,25 +55,20 @@ namespace LibrarySystem.Pages
         private void Delete_Loan_Submit(object sender, RoutedEventArgs e)
         {
             Loan loan = ALL_LOANS.Where(x => x.Item.Title == Item_Title_Input.Text).First();
+
+            loan.Item.IsAvailable = true;
+            SqliteDataAccess.Update(loan.Item);
+
             SqliteDataAccess.Delete(loan);
             updateDataGrid();
         }
+
         private void Update_Loan_Submit(object sender, RoutedEventArgs e)
         {
             Loan loan = ALL_LOANS.Where(x => x.Item.Title == Item_Title_Input.Text).First();
             loan.DateDue = Convert.ToDateTime(ReturnDate.Text);
             SqliteDataAccess.Update(loan);
             updateDataGrid();
-        }
-
-        private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            PropertyDescriptor propertyDescriptor = (PropertyDescriptor)e.PropertyDescriptor;
-            e.Column.Header = propertyDescriptor.DisplayName;
-            if (propertyDescriptor.DisplayName == "Id")
-            {
-                e.Cancel = true;
-            }
         }
     }
 }

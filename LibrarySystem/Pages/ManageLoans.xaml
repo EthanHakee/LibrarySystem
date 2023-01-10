@@ -3,15 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:LibrarySystem.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Home"
-      FontSize="20"
-      Background="#303030"
-      Foreground="White">
+      mc:Ignorable="d"
+      Style="{StaticResource Default_Page}">
 
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -21,52 +17,54 @@
 
             <DataGrid Name="LoanGrid"
                       Margin="10,10,10,10"
-                      Foreground="Black" 
+                      IsReadOnly="True"
                       SelectionMode="Single"
-                      AutoGeneratingColumn="OnAutoGeneratingColumn"
-                      SelectionChanged="LoanGrid_SelectionChanged">
-            </DataGrid>
-
+                      Background="#303030"
+                      BorderThickness="0"
+                      SelectionChanged="LoanGrid_SelectionChanged"/>
         </Grid>
 
 
         <Grid Grid.Column="1">
+
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Date Loaned"
                        Margin="10,5,5,0"
                        VerticalAlignment="Top"
                        Grid.Row="0"/>
+            
             <TextBox Name="Loan_Out_Input"
                      Margin="5,5,5,0"
                      VerticalAlignment="Bottom"
                      IsReadOnly="True"
                      Height="40"
                      Grid.Row="0"/>
+
+            <DatePicker x:Name="ReturnDate"
+                        VerticalAlignment="Bottom"
+                        Height="40"
+                        Margin="10,5,10,0"
+                        Background="#252525"
+                        BorderThickness="0"
+                        Grid.Row="1"/>
+
             <TextBlock Text="Return Date"
                        VerticalAlignment="Top"
                        Margin="10,5,5,0"
                        Grid.Row="1"/>
 
-
-            <DatePicker Name="ReturnDate"
-                        VerticalAlignment="bottom"
-                    Background="#252525"
-                     Margin="5,5,5,0"
-                     Height="40"
-                     Grid.Row="1"
-                      BorderThickness="0"
-                        />
             <TextBlock Text="Item"
                        VerticalAlignment="Top"
                        Margin="10,5,5,0"
                        Grid.Row="2"/>
+            
             <TextBox Name="Item_Title_Input"
                      IsReadOnly="True"
                      VerticalAlignment="Bottom"
@@ -78,6 +76,7 @@
                        VerticalAlignment="Top"
                        Margin="10,5,5,0"
                        Grid.Row="3"/>
+            
             <TextBox Name="Member_Name_Input"
                      IsReadOnly="True"
                      VerticalAlignment="Bottom"
@@ -86,29 +85,25 @@
                      Grid.Row="3"/>
 
             <Grid Grid.Row="4">
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button  Name="UpdateLoan"
-                         Grid.Column="0"
+                <Button Grid.Column="0"
                         Content="Update"
-                        Background="#404258"
-                        Foreground="White"
-                        Margin="5,5,5,5"
-                        Padding="1,1,1,1"
-                         Click="Update_Loan_Submit"/>
+                        Margin="5,5,5,10"
+                        Click="Update_Loan_Submit"/>
 
-                <Button  Name="DeleteLoan"
-                        Grid.Column="1"
+                <Button Grid.Column="1"
                         Content="Delete"
-                        Background="#404258"
-                        Foreground="White"
-                        Margin="5,5,5,5"
-                        Padding="1,1,1,1"
+                        Margin="5,5,5,10"
                         Click="Delete_Loan_Submit"/>
             </Grid>
+            
         </Grid>
+        
     </Grid>
+    
 </Page>
